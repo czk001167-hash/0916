@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Space &amp; Live Time</title>
-  <meta name="description" content="Personal space showcasing real-time clock, localized dynamic greeting, and customizable profile with Deep Aurora Glassmorphism design.">
-  
+  <meta name="description"
+    content="Personal space showcasing real-time clock, localized dynamic greeting, and customizable profile with Deep Aurora Glassmorphism design.">
+
   <!-- Google Fonts Preconnect & Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!-- Ambient Aurora Lighting Effects -->
   <div class="aurora-container" aria-hidden="true">
@@ -24,16 +29,17 @@
 
   <main class="page-wrapper">
     <section class="glass-card" id="personal-card">
-      
+
       <!-- Top Bar: Greeting & Format Switcher -->
       <header class="card-header">
         <div class="greeting-pill" id="greeting-pill">
           <span class="greeting-icon" id="greeting-icon" aria-hidden="true">✨</span>
           <span class="greeting-text" id="greeting-text">Hello &amp; Welcome</span>
         </div>
-        
+
         <div class="controls-group">
-          <button type="button" class="toggle-btn" id="format-toggle" aria-label="Toggle 12/24 hour time format" title="Toggle 12/24 hour time format">
+          <button type="button" class="toggle-btn" id="format-toggle" aria-label="Toggle 12/24 hour time format"
+            title="Toggle 12/24 hour time format">
             <span class="toggle-label" id="format-toggle-label">12H</span>
             <span class="toggle-indicator"></span>
           </button>
@@ -49,19 +55,25 @@
 
         <div class="identity-info">
           <div class="name-row">
-            <h1 class="user-name" id="user-name" contenteditable="false" spellcheck="false" title="Click edit to change your name">Chen Jen Kai</h1>
-            <button type="button" class="icon-btn edit-btn" id="edit-name-btn" aria-label="Edit your name" title="Edit name">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <h1 class="user-name" id="user-name" contenteditable="false" spellcheck="false"
+              title="Click edit to change your name">Chen Jen Kai</h1>
+            <button type="button" class="icon-btn edit-btn" id="edit-name-btn" aria-label="Edit your name"
+              title="Edit name">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 20h9"></path>
                 <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
               </svg>
             </button>
           </div>
-          
+
           <div class="title-row">
-            <p class="user-title" id="user-title" contenteditable="false" spellcheck="false" title="Click edit to change your title">Creative Developer &amp; Technologist</p>
-            <button type="button" class="icon-btn edit-btn" id="edit-title-btn" aria-label="Edit your title" title="Edit title">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <p class="user-title" id="user-title" contenteditable="false" spellcheck="false"
+              title="Click edit to change your title">Creative Developer &amp; Technologist</p>
+            <button type="button" class="icon-btn edit-btn" id="edit-title-btn" aria-label="Edit your title"
+              title="Edit title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 20h9"></path>
                 <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
               </svg>
@@ -106,7 +118,7 @@
               <span class="digits" id="clock-digits">10:15:42</span>
               <span class="period-badge" id="clock-period">AM</span>
             </div>
-            
+
             <div class="seconds-tag" id="seconds-tag">
               <span class="pulse-dot"></span>
               <span id="seconds-value">42</span>s live sync
@@ -117,7 +129,8 @@
         <!-- Date & Timezone Metadata -->
         <div class="clock-metadata">
           <div class="meta-item date-badge" id="current-date-badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
               <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -127,10 +140,12 @@
           </div>
 
           <div class="meta-item timezone-badge" id="current-timezone-badge" title="Local Timezone">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+              </path>
             </svg>
             <span id="current-timezone-text">GMT+8 (Local Time)</span>
           </div>
@@ -248,7 +263,8 @@
           <div class="project-field">
             <h4 class="field-label">專案介紹 (Project Description)：</h4>
             <p class="field-content">
-              以現代極光玻璃擬態（Deep Aurora Glassmorphism）美學打造的高互動性個人首頁。具備高精度毫秒即時時鐘、SVG 秒數平滑進度環、時段自適應動態問候語、12H/24H 顯示格式一鍵切換，以及透過 LocalStorage 本地持久化技術實現的即時姓名與職稱編輯功能。
+              以現代極光玻璃擬態（Deep Aurora Glassmorphism）美學打造的高互動性個人首頁。具備高精度毫秒即時時鐘、SVG 秒數平滑進度環、時段自適應動態問候語、12H/24H 顯示格式一鍵切換，以及透過
+              LocalStorage 本地持久化技術實現的即時姓名與職稱編輯功能。
             </p>
           </div>
 
@@ -265,15 +281,21 @@
           </div>
 
           <div class="project-actions-row">
-            <a href="https://github.com/czk001167-hash/0916" target="_blank" rel="noopener noreferrer" class="action-link github-link" title="檢視 GitHub 原始碼">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            <a href="https://github.com/czk001167-hash/0916" target="_blank" rel="noopener noreferrer"
+              class="action-link github-link" title="檢視 GitHub 原始碼">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                </path>
               </svg>
               <span>GitHub Repository</span>
             </a>
 
-            <a href="https://czk001167-hash.github.io/0916/" target="_blank" rel="noopener noreferrer" class="action-link demo-link" title="開啟線上 Demo 網站">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <a href="https://czk001167-hash.github.io/0916/" target="_blank" rel="noopener noreferrer"
+              class="action-link demo-link" title="開啟線上 Demo 網站">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                 <polyline points="15 3 21 3 21 9"></polyline>
                 <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -292,20 +314,28 @@
         </div>
 
         <div class="social-links" aria-label="Social and Portfolio Links">
-          <a href="https://github.com/czk001167-hash/0916" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub Profile" title="GitHub">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          <a href="https://github.com/czk001167-hash/0916" target="_blank" rel="noopener noreferrer" class="social-btn"
+            aria-label="GitHub Profile" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+              </path>
             </svg>
           </a>
-          <a href="https://czk001167-hash.github.io/0916/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Portfolio" title="Portfolio">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <a href="https://czk001167-hash.github.io/0916/" target="_blank" rel="noopener noreferrer" class="social-btn"
+            aria-label="Portfolio" title="Portfolio">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
               <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
               <polyline points="2 17 12 22 22 17"></polyline>
               <polyline points="2 12 12 17 22 12"></polyline>
             </svg>
           </a>
-          <a href="mailto:czk001167-hash@users.noreply.github.com" class="social-btn" aria-label="Send Email" title="Email">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <a href="mailto:czk001167-hash@users.noreply.github.com" class="social-btn" aria-label="Send Email"
+            title="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
@@ -318,4 +348,5 @@
 
   <script src="app.js"></script>
 </body>
+
 </html>
