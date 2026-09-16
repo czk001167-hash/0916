@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Space &amp; Live Time</title>
+  <meta name="description" content="Personal space showcasing real-time clock, localized dynamic greeting, and customizable profile with Deep Aurora Glassmorphism design.">
+  
+  <!-- Google Fonts Preconnect & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Aurora Lighting Effects -->
+  <div class="aurora-container" aria-hidden="true">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+    <div class="aurora-glow-overlay"></div>
+  </div>
+
+  <main class="page-wrapper">
+    <section class="glass-card" id="personal-card">
+      
+      <!-- Top Bar: Greeting & Format Switcher -->
+      <header class="card-header">
+        <div class="greeting-pill" id="greeting-pill">
+          <span class="greeting-icon" id="greeting-icon" aria-hidden="true">✨</span>
+          <span class="greeting-text" id="greeting-text">Hello &amp; Welcome</span>
+        </div>
+        
+        <div class="controls-group">
+          <button type="button" class="toggle-btn" id="format-toggle" aria-label="Toggle 12/24 hour time format" title="Toggle 12/24 hour time format">
+            <span class="toggle-label" id="format-toggle-label">12H</span>
+            <span class="toggle-indicator"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Profile Section: Avatar & Editable Name/Title -->
+      <div class="profile-section">
+        <div class="avatar-wrapper" id="avatar-container" title="Personal Avatar">
+          <div class="avatar-ring"></div>
+          <div class="avatar-content" id="avatar-initials">AM</div>
+        </div>
+
+        <div class="identity-info">
+          <div class="name-row">
+            <h1 class="user-name" id="user-name" contenteditable="false" spellcheck="false" title="Click edit to change your name">Alex Morgan</h1>
+            <button type="button" class="icon-btn edit-btn" id="edit-name-btn" aria-label="Edit your name" title="Edit name">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="title-row">
+            <p class="user-title" id="user-title" contenteditable="false" spellcheck="false" title="Click edit to change your title">Creative Developer &amp; Technologist</p>
+            <button type="button" class="icon-btn edit-btn" id="edit-title-btn" aria-label="Edit your title" title="Edit title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="edit-hint" id="edit-hint" aria-live="polite">Press Enter or click outside to save changes</div>
+        </div>
+      </div>
+
+      <!-- Center Clock Display with SVG Seconds Progress Ring -->
+      <section class="clock-display-section" aria-label="Current Live Time">
+        <div class="clock-ring-container">
+          <!-- Circular SVG Progress Ring for Seconds -->
+          <svg class="progress-ring" viewBox="0 0 320 320" aria-hidden="true">
+            <defs>
+              <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#06b6d4" />
+                <stop offset="50%" stop-color="#8b5cf6" />
+                <stop offset="100%" stop-color="#d946ef" />
+              </linearGradient>
+              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <!-- Background circle track -->
+            <circle class="progress-ring-bg" cx="160" cy="160" r="136" />
+            <!-- Active progress ring -->
+            <circle class="progress-ring-circle" id="progress-circle" cx="160" cy="160" r="136" />
+          </svg>
+
+          <!-- Clock Digital Content -->
+          <div class="clock-center-content">
+            <div class="time-primary">
+              <span class="digits" id="clock-digits">10:15:42</span>
+              <span class="period-badge" id="clock-period">AM</span>
+            </div>
+            
+            <div class="seconds-tag" id="seconds-tag">
+              <span class="pulse-dot"></span>
+              <span id="seconds-value">42</span>s live sync
+            </div>
+          </div>
+        </div>
+
+        <!-- Date & Timezone Metadata -->
+        <div class="clock-metadata">
+          <div class="meta-item date-badge" id="current-date-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span id="current-date-text">Wednesday, September 16, 2026</span>
+          </div>
+
+          <div class="meta-item timezone-badge" id="current-timezone-badge" title="Local Timezone">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span id="current-timezone-text">GMT+8 (Local Time)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Quick Actions & Hub -->
+      <footer class="card-footer">
+        <div class="quick-status">
+          <span class="status-indicator"></span>
+          <span class="status-text" id="status-quote">Crafting digital experiences in real-time.</span>
+        </div>
+
+        <div class="social-links" aria-label="Social and Portfolio Links">
+          <a href="#github" class="social-btn" aria-label="GitHub Profile" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="#portfolio" class="social-btn" aria-label="Portfolio" title="Portfolio">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </a>
+          <a href="#mail" class="social-btn" aria-label="Send Email" title="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+      </footer>
+
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

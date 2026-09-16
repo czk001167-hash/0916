@@ -1,0 +1,630 @@
+/* ==========================================================================
+   Deep Aurora Glassmorphism Design System
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --bg-base: #07080f;
+  --bg-card: rgba(16, 20, 32, 0.65);
+  --bg-card-hover: rgba(22, 28, 44, 0.72);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-glass-highlight: rgba(255, 255, 255, 0.25);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-accent: #38bdf8;
+
+  /* Vibrant Aurora Glow Accents */
+  --aurora-cyan: #06b6d4;
+  --aurora-purple: #8b5cf6;
+  --aurora-pink: #ec4899;
+  --aurora-emerald: #10b981;
+  --aurora-indigo: #6366f1;
+
+  /* Typography */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Shadows & Glows */
+  --shadow-main: 0 25px 60px -15px rgba(0, 0, 0, 0.7),
+                 0 0 45px rgba(99, 102, 241, 0.12),
+                 inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --glow-accent: 0 0 24px rgba(139, 92, 246, 0.45);
+  
+  /* Transitions */
+  --trans-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-smooth: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Aurora Lighting Background Effects
+   ========================================================================== */
+
+.aurora-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 20%, #0d1226 0%, #07080f 80%);
+}
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.orb-1 {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, var(--aurora-indigo), transparent 70%);
+  top: -120px;
+  left: 15%;
+  animation: floatOrb1 18s alternate infinite;
+}
+
+.orb-2 {
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, var(--aurora-cyan), transparent 70%);
+  bottom: 5%;
+  right: 12%;
+  animation: floatOrb2 22s alternate infinite;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--aurora-pink), transparent 70%);
+  top: 40%;
+  left: 60%;
+  animation: floatOrb3 15s alternate infinite;
+}
+
+.aurora-glow-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, rgba(7, 8, 15, 0.75) 90%);
+}
+
+@keyframes floatOrb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 80px) scale(1.15); }
+  100% { transform: translate(-40px, 120px) scale(0.95); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-80px, -60px) scale(1.2); }
+  100% { transform: translate(50px, -90px) scale(0.9); }
+}
+
+@keyframes floatOrb3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-100px, 50px) scale(1.1); }
+  100% { transform: translate(70px, -40px) scale(1); }
+}
+
+/* ==========================================================================
+   Page Layout & Glass Card
+   ========================================================================== */
+
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.25rem;
+}
+
+.glass-card {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  background: var(--bg-card);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid var(--border-glass);
+  border-radius: 28px;
+  padding: 2.25rem;
+  box-shadow: var(--shadow-main);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transition: border-color var(--trans-smooth), box-shadow var(--trans-smooth);
+}
+
+.glass-card:hover {
+  border-color: var(--border-glass-highlight);
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.8),
+              0 0 50px rgba(99, 102, 241, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   Card Header: Dynamic Greeting & Controls
+   ========================================================================== */
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.greeting-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  backdrop-filter: blur(12px);
+  letter-spacing: 0.01em;
+}
+
+.greeting-icon {
+  font-size: 1rem;
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.5));
+}
+
+.controls-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toggle-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all var(--trans-fast);
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--aurora-cyan);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.3);
+}
+
+.toggle-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--aurora-cyan);
+  box-shadow: 0 0 8px var(--aurora-cyan);
+}
+
+/* ==========================================================================
+   Profile Section: Avatar, Name & Title
+   ========================================================================== */
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+}
+
+.avatar-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--aurora-cyan), var(--aurora-purple), var(--aurora-pink));
+  opacity: 0.85;
+  animation: rotateRing 10s linear infinite;
+  filter: blur(2px);
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.avatar-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #0f1322;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+  background-clip: padding-box;
+}
+
+.identity-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.name-row, .title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, #ffffff 40%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  outline: none;
+  border-radius: 6px;
+  padding: 2px 4px;
+  transition: all var(--trans-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  outline: none;
+  border-radius: 6px;
+  padding: 2px 4px;
+  transition: all var(--trans-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Editing active state */
+.user-name[contenteditable="true"],
+.user-title[contenteditable="true"] {
+  -webkit-text-fill-color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 2px var(--aurora-purple);
+  cursor: text;
+  white-space: normal;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--trans-fast);
+  opacity: 0.7;
+}
+
+.icon-btn:hover {
+  color: var(--text-primary);
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.edit-hint {
+  font-size: 0.75rem;
+  color: var(--aurora-cyan);
+  margin-top: 0.2rem;
+  display: none;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.edit-hint.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Clock Display Section & SVG Ring
+   ========================================================================== */
+
+.clock-display-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.clock-ring-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* Start at 12 o'clock */
+}
+
+.progress-ring-bg {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 8;
+  fill: transparent;
+}
+
+.progress-ring-circle {
+  stroke: url(#ringGradient);
+  stroke-width: 8;
+  stroke-linecap: round;
+  fill: transparent;
+  stroke-dasharray: 854.51;
+  stroke-dashoffset: 854.51;
+  transition: stroke-dashoffset 0.25s linear;
+  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.65));
+}
+
+.clock-center-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.35rem;
+}
+
+.time-primary {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.digits {
+  font-family: var(--font-mono);
+  font-size: clamp(2.3rem, 6vw, 2.95rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  text-shadow: 0 0 35px rgba(255, 255, 255, 0.25),
+               0 0 15px rgba(6, 182, 212, 0.35);
+}
+
+.period-badge {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--aurora-cyan);
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  letter-spacing: 0.05em;
+}
+
+.seconds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--aurora-emerald);
+  box-shadow: 0 0 8px var(--aurora-emerald);
+  animation: pulseBeacon 1.2s infinite ease-in-out;
+}
+
+@keyframes pulseBeacon {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* Date & Timezone Metadata */
+.clock-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--trans-fast);
+}
+
+.meta-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.meta-item svg {
+  color: var(--aurora-purple);
+}
+
+/* ==========================================================================
+   Card Footer: Status Quote & Quick Links
+   ========================================================================== */
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 1rem;
+}
+
+.quick-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--aurora-cyan);
+  box-shadow: 0 0 10px var(--aurora-cyan);
+  flex-shrink: 0;
+}
+
+.status-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--trans-fast);
+}
+
+.social-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: var(--aurora-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 520px) {
+  .page-wrapper {
+    padding: 1rem;
+  }
+
+  .glass-card {
+    padding: 1.5rem;
+    border-radius: 22px;
+    gap: 1.5rem;
+  }
+
+  .clock-ring-container {
+    width: 250px;
+    height: 250px;
+  }
+
+  .digits {
+    font-size: 2.1rem;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .social-links {
+    align-self: flex-end;
+  }
+}
