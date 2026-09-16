@@ -14,7 +14,7 @@
   };
 
   const DEFAULT_VALUES = {
-    NAME: 'Alex Morgan',
+    NAME: 'Chen Jen Kai',
     TITLE: 'Creative Developer & Technologist',
     FORMAT: '12H'
   };
