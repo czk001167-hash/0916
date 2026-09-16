@@ -10,6 +10,8 @@
 
 🔗 **Live Demo**: [https://czk001167-hash.github.io/0916/](https://czk001167-hash.github.io/0916/)
 
+[![Personal Space & Live Clock Preview](demo-preview.png)](https://czk001167-hash.github.io/0916/)
+
 ---
 
 ## ✨ Features
@@ -44,6 +46,7 @@
 ├── index.html        # Semantic HTML5 markup, glass card layout, and SVG progress ring
 ├── style.css         # Design tokens, Aurora animations, glassmorphic styling, and responsiveness
 ├── app.js            # Clock synchronization loop, greeting engine, format toggle, and persistence
+├── demo-preview.png  # Live demo interface screenshot
 └── README.md         # Project documentation
 ```
 
