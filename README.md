@@ -40,6 +40,25 @@
 
 ---
 
+## 🛠️ 2. Skills (專業技能)
+
+- 🐍 **Python**: 資料處理、模型訓練、自動化腳本開發（NumPy, Pandas, Scikit-Learn）。
+- ⚡ **C / C++**: 物件導向程式設計 (OOP)、標準模板庫 (STL)、資料結構與演算法、底層記憶體管理。
+- 🤖 **Machine Learning**: 機器學習演算法、特徵工程、深度學習架構與 AI 應用。
+
+---
+
+## 🚀 3. Projects (作品與專案)
+
+### 🌟 Personal Space & Live Clock Dashboard
+- **專案名稱 (Project Name)**: Personal Space & Live Clock Dashboard
+- **專案簡介 (Project Description)**: 以極光玻璃擬態為主題的個人動態資訊首頁，整合高精度毫秒即時時鐘、SVG 秒數動態進度環、時段自適應問候語、12H/24H 雙模式切換與 LocalStorage 資料即時編輯保存。
+- **使用技術 (Tech Stack)**: HTML5 (語意化標籤), CSS3 (Glassmorphism & Keyframe 極光動畫), Modern JavaScript (ES6+), SVG 向量繪圖, LocalStorage API, RWD 響應式設計。
+- **GitHub 連結 (GitHub Link)**: [https://github.com/czk001167-hash/0916](https://github.com/czk001167-hash/0916)
+- **線上預覽 (Live Demo)**: [https://czk001167-hash.github.io/0916/](https://czk001167-hash.github.io/0916/)
+
+---
+
 ## 📂 Project Structure
 
 ```text

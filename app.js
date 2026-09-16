@@ -52,6 +52,7 @@
     setupRing();
     loadProfile();
     setupEventListeners();
+    setupNavigation();
     updateTimezone();
     updateTime(); // Initial immediate render
     startClockLoop();
@@ -291,6 +292,44 @@
     if (elements.formatToggleLabel) {
       elements.formatToggleLabel.textContent = is24Hour ? '24H' : '12H';
     }
+  }
+
+  // --- Section Navigation Highlighting ---
+  function setupNavigation() {
+    const navPills = document.querySelectorAll('.nav-pill');
+    const sections = ['clock-section', 'skills-section', 'projects-section'];
+
+    navPills.forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        const targetId = pill.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            navPills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+          }
+        }
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY + 200;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const sectionEl = document.getElementById(sections[i]);
+        if (sectionEl && sectionEl.offsetTop <= scrollPos) {
+          navPills.forEach(p => {
+            if (p.getAttribute('href') === `#${sections[i]}`) {
+              p.classList.add('active');
+            } else {
+              p.classList.remove('active');
+            }
+          });
+          break;
+        }
+      }
+    }, { passive: true });
   }
 
   // --- Subtle Ambient Parallax ---
